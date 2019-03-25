@@ -13,6 +13,9 @@ class Node:
             tree += self.left.print_node(level=level+1)
         return tree
 
+    def __str__(self):
+        return self.print_node()
+
 class Splay:
     #initializes tree
     def __init__(self):
@@ -20,7 +23,7 @@ class Splay:
 
     #helps visualize tree
     def __str__(self):
-        return self.root.print_node()
+        return str(self.root)
 
     def rotate_right(self, pivot):
         #          pivot
@@ -282,14 +285,26 @@ class Splay:
                 #and root is now root.left,
                 #value does not exist in the current tree
                 #and all nodes in are less than value
-                self.splay(self.root, value)
-                #       AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                self.root = self.splay(self.root, value)
+                #          last_searched
+                #         /
+                #    new_left
+
                 self.root.right = n
-                #add comment
+                #           last_searched
+                #         /              \
+                #    new_left            right
 
         #value was not in tree
         else:
             print("value not in tree")
+
+    def get(self, value):
+        self.root = self.splay(self.root, value)
+        if value == self.root.value:
+            return self.root.value
+        else:
+            return None
 
 def main():
     splay_tree = Splay()
@@ -304,6 +319,21 @@ def main():
     splay_tree.insert(5)
     splay_tree.insert(0)
 
+    print(str(splay_tree))
+    print("-------------------------------------------------------------")
+    print("Got: " + str(splay_tree.get(2)))
+    print(str(splay_tree))
+    print("-------------------------------------------------------------")
+    print("Got: " + str(splay_tree.get(4)))
+    print(str(splay_tree))
+    print("-------------------------------------------------------------")
+    print("Got: " + str(splay_tree.get(2)))
+    print(str(splay_tree))
+    print("-------------------------------------------------------------")
+    splay_tree.remove(9)
+    print(str(splay_tree))
+    print("-------------------------------------------------------------")
+    print("Got: " + str(splay_tree.get(2)))
     print(str(splay_tree))
 
 main()
