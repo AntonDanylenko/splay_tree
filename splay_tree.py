@@ -5,22 +5,22 @@ class Node:
         self.left = None
         self.right = None
 
-    def __str__(self, level=0):
-        tree = "\t"*level+self.value+"\n"
-        if self.left!=None:
-            tree += str(self.left,level=level+1)
+    def print_node(self, level=0):
+        tree = "\t"*level+str(self.value)+"\n"
         if self.right!=None:
-            tree += str(self.left,level=level+1)
+            tree = self.right.print_node(level=level+1) + tree
+        if self.left!=None:
+            tree += self.left.print_node(level=level+1)
         return tree
 
 class Splay:
     #initializes tree
     def __init__(self):
-        root = None
+        self.root = None
 
     #helps visualize tree
     def __str__(self):
-        return str(self.root)
+        return self.root.print_node()
 
     def rotate_right(self, pivot):
         #          pivot
@@ -97,7 +97,7 @@ class Splay:
                 # left2  right2
 
                 #splay value up to the left left grandchild
-                pivot.left.left = splay(pivot.left.left, value)
+                pivot.left.left = self.splay(pivot.left.left, value)
                 #         pivot
                 #        /    \
                 #     left   right
@@ -105,7 +105,7 @@ class Splay:
                 # value  right2
 
                 #rotate right around pivot once to bring value higher
-                pivot = rotate_right(pivot)
+                pivot = self.rotate_right(pivot)
                 #         pivot
                 #        /     \
                 #     value   old_pivot
@@ -121,7 +121,7 @@ class Splay:
                 # left2  right2
 
                 #splay value up to the left right grandchild
-                pivot.left.right = splay(pivot.left.right, value)
+                pivot.left.right = self.splay(pivot.left.right, value)
                 #         pivot
                 #        /    \
                 #     left   right
@@ -131,7 +131,7 @@ class Splay:
                 #since rotate_left deals with the right's children,
                 #we have to check
                 if pivot.left.right!=None:
-                    pivot.left = rotate_left(pivot.left)
+                    pivot.left = self.rotate_left(pivot.left)
                     #         pivot
                     #        /    \
                     #     value   right
@@ -155,7 +155,7 @@ class Splay:
             #otherwise, we have to bring value
             #up one move level
             else:
-                return rotate_right(pivot)
+                return self.rotate_right(pivot)
 
         #value is greater than root
         elif value > pivot.value:
@@ -163,17 +163,17 @@ class Splay:
                 return pivot
 
             if value < pivot.right.value:
-                pivot.right.left = splay(pivot.right.left, value)
+                pivot.right.left = self.splay(pivot.right.left, value)
                 if pivot.right.left != None:
-                    pivot.right = rotate_right(pivot.right)
+                    pivot.right = self.rotate_right(pivot.right)
             elif value > pivot.right.value:
-                pivot.right.right = splay(pivot.right.right, value)
-                pivot = rotate_left(pivot)
+                pivot.right.right = self.splay(pivot.right.right, value)
+                pivot = self.rotate_left(pivot)
 
             if pivot.right == None:
                 return pivot
             else:
-                return rotate_left(pivot)
+                return self.rotate_left(pivot)
 
         #if value was equal to pivot's value
         #there's nothing to splay
@@ -190,7 +190,7 @@ class Splay:
         #splay the value node to the root.
         #if value is not in tree, the
         #last node searched becomes root
-        self.root = splay(self.root, value)
+        self.root = self.splay(self.root, value)
 
         #if the value wasn't in the tree,
         #the root is now either < or > than value.
@@ -227,7 +227,7 @@ class Splay:
             n = Node(value)
             n.right = self.root.right
             n.left = self.root
-            self.root.left = None
+            self.root.right = None
             self.root = n
             #         n
             #       /   \
@@ -238,6 +238,9 @@ class Splay:
         else:
             print("value already in tree")
 
+        #print(str(self))
+        #print("-------------------------------------------------------------")
+
     def remove(self, value):
         #tree empty, cant remove anything
         if self.root == None:
@@ -246,7 +249,7 @@ class Splay:
         #value node splayed to root
         #if value is not in tree, the
         #last node searched becomes root
-        self.root = splay(self.root, value)
+        self.root = self.splay(self.root, value)
 
         #if value was in tree, remove it
         if self.root.value == value:
@@ -279,7 +282,7 @@ class Splay:
                 #and root is now root.left,
                 #value does not exist in the current tree
                 #and all nodes in are less than value
-                splay(self.root, value)
+                self.splay(self.root, value)
                 #       AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
                 self.root.right = n
                 #add comment
@@ -302,3 +305,5 @@ def main():
     splay_tree.insert(0)
 
     print(str(splay_tree))
+
+main()
