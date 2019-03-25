@@ -300,9 +300,13 @@ class Splay:
             print("value not in tree")
 
     def get(self, value):
+        #splay value to root
         self.root = self.splay(self.root, value)
+        #if value was in the tree, return it
         if value == self.root.value:
             return self.root.value
+
+        #else value was not in the tree
         else:
             return None
 
