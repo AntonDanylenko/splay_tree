@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Splay Trees</title>
+  <style>
+    body {
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 style="text-align:left-align">What’s a Splay Tree?</h1>
+  <p >A binary search tree wherein the more you search something the faster it gets to search it
+    Accomplished by moving a searched object closer to the root position while maintaining the binary search tree.
+    Done by using a series of moves called zigs and zags
+  Searched object always moves 2 spaces closer to the root with each search
+  </p>
+
+  <h1 style="text-align:left-align">What’s a zig and zag?</h1>
+  <ul>
+    <li>These are Rotations of a binary tree
+      <ul>
+        <li>Zig - Rotates to the right Ex. x becomes parent of y, y becomes right child of x, and x’s former right child becomes y’s left child</li>
+        <li>Zag - Rotates to the left Ex. y becomes parent of x, x becomes left child of y, and y’s former left child becomes x’s right child</li>
+      </ul>
+    </li>
+    <li>Used when searched node is a child of the root</li>
+  </ul>
+  <img src="static/one.JPG">
+
+
+  <h1 style="text-align:left-align">What’s a zig-zig and zag-zag?</h1>
+  <ul>
+    <li>Combination of 2  moves, used when the searched node has a parent and a grandparent
+      <ul>
+      <li>Zig-Zig - two consecutive right rotations left-aligned on the grand parent then parent, done when the searched node is the left child of the parent and the parent is the left of the GP</li>
+      <li>Zag-Zag - two consecutive left rotations left-aligned on the grand parent then parent, done when the searched node is the right child of the parent and the parent is the right of the GP</li>
+      </ul>
+    </li>
+  </ul>
+  <img src="static/two.JPG">
+
+  <h1 style="text-align:left-align"></h1>
+  <p></p>
+
+  <h1 style="text-align:left-align"></h1>
+  <p></p>
+
+  <h1 style="text-align:left-align"></h1>
+  <p></p>
+
+  <h1 style="text-align:left-align"></h1>
+  <p></p>
+
+
+
+
+
+
+</body>
+
+
+
+</html>

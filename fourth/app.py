@@ -1,8 +1,13 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
-app.secret_key = os.urandom(32)
+
 
 @app.route("/")
 def landing():
-    return "static/landing.html"
+    return render_template("landing.html")
+
+
+if __name__=="__main__":
+    app.debug=True
+    app.run()#host='0.0.0.0' <--- put that in the run when ready
