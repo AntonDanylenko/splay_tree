@@ -10,4 +10,4 @@ def landing():
 
 if __name__=="__main__":
     app.debug=True
-    app.run()#host='0.0.0.0' <--- put that in the run when ready
+    app.run(host='0.0.0.0')#host='0.0.0.0' <--- put that in the run when ready

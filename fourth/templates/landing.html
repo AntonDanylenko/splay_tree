@@ -42,17 +42,55 @@
   </ul>
   <img src="static/two.JPG">
 
-  <h1 style="text-align:left-align"></h1>
-  <p></p>
+  <h1 style="text-align:left-align">Zag-Zig and Zig-Zag</h1>
+  <ul>
+    <li>The combinations used for the other cases: left child of parent but parent is the right child of GP and right child of parent but parent is left child of GP
+      <ul>
+      <li>Zig-Zag - LC of P and RC of GP - You Zig on the Parent then Zag on the GP</li>
+      <li>Zag-Zig - RC of P and LC of GP - You Zag on the Parent then Zig on the GP</li>
+      </ul>
+    </li>
+  </ul>
+  <img src="static/three.JPG">
 
-  <h1 style="text-align:left-align"></h1>
-  <p></p>
+  <h1 style="text-align:left-align">Now Let’s talk about Splaying</h1>
+  <ul>
+    <li>Splaying is using the aforementioned Zig, Zag, Zig-Zig, Zag-Zag, Zig-Zag,and Zag-Zig rotations on a node</li>
+    <li>You splay after a search, after inserting a new node, and before deleting a node</li>
+    <li>Also after each splay the splay tree will become more balanced, but note: A splay tree doesn’t need to be balanced it only has to be a BST</li>
+  </ul>
+  <p>Ex: Splaying after searching</p>
+  <img src="static/four.JPG">
 
-  <h1 style="text-align:left-align"></h1>
-  <p></p>
 
-  <h1 style="text-align:left-align"></h1>
-  <p></p>
+  <h1 style="text-align:left-align">Insertion & Deletion</h1>
+  <h2>Insertion</h2>
+  <ul>
+    <li>If BST is empty create the new node as the root and you are finished</li>
+    <li>If not then insert the node as you would normally in a BST</li>
+    <li>Proceed to splay the new node</li>
+  </ul>
+  <h2>Deletion</h2>
+  <ul>
+    <li>Splay target node until its at the root</li>
+    <li>Proceed to remove the node as you would normally in a BST</li>
+  </ul>
+
+  <h1 style="text-align:left-align">Some O(n) details and Typical applications</h1>
+  <ul>
+    <li>All operations on average run in O(logn) on average</li>
+    <li>And in worse case O(n)</li>
+  </ul>
+  <p>Some things they’re used in include:</p>
+  <ul>
+    <li>Windows NT (in the virtual memory, networking, and file system code)</li>
+    <li>The gcc compiler and GNU C++ library</li>
+    <li>The sed string editor</li>
+    <li>Fore Systems network routers</li>
+    <li>Unix malloc</li>
+    <li>Linux loadable kernel modules</li>
+    <li>And you can use em for a cool search algorithm</li>
+  </ul>
 
 
 
