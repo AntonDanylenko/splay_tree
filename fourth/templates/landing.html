@@ -11,19 +11,19 @@
 
 <body>
 
-  <h1 style="text-align:left-align">What’s a Splay Tree?</h1>
+  <h1 style="text-align:left-align">What's a Splay Tree?</h1>
   <p >A binary search tree wherein the more you search something the faster it gets to search it
     Accomplished by moving a searched object closer to the root position while maintaining the binary search tree.
     Done by using a series of moves called zigs and zags
   Searched object always moves 2 spaces closer to the root with each search
   </p>
 
-  <h1 style="text-align:left-align">What’s a zig and zag?</h1>
+  <h1 style="text-align:left-align">What's a zig and zag?</h1>
   <ul>
     <li>These are Rotations of a binary tree
       <ul>
-        <li>Zig - Rotates to the right Ex. x becomes parent of y, y becomes right child of x, and x’s former right child becomes y’s left child</li>
-        <li>Zag - Rotates to the left Ex. y becomes parent of x, x becomes left child of y, and y’s former left child becomes x’s right child</li>
+        <li>Zig - Rotates to the right Ex. x becomes parent of y, y becomes right child of x, and x's former right child becomes y's left child</li>
+        <li>Zag - Rotates to the left Ex. y becomes parent of x, x becomes left child of y, and y's former left child becomes x's right child</li>
       </ul>
     </li>
     <li>Used when searched node is a child of the root</li>
@@ -31,7 +31,7 @@
   <img src="static/one.JPG">
 
 
-  <h1 style="text-align:left-align">What’s a zig-zig and zag-zag?</h1>
+  <h1 style="text-align:left-align">What's a zig-zig and zag-zag?</h1>
   <ul>
     <li>Combination of 2  moves, used when the searched node has a parent and a grandparent
       <ul>
@@ -53,11 +53,11 @@
   </ul>
   <img src="static/three.JPG">
 
-  <h1 style="text-align:left-align">Now Let’s talk about Splaying</h1>
+  <h1 style="text-align:left-align">Now Let's talk about Splaying</h1>
   <ul>
     <li>Splaying is using the aforementioned Zig, Zag, Zig-Zig, Zag-Zag, Zig-Zag,and Zag-Zig rotations on a node</li>
     <li>You splay after a search, after inserting a new node, and before deleting a node</li>
-    <li>Also after each splay the splay tree will become more balanced, but note: A splay tree doesn’t need to be balanced it only has to be a BST</li>
+    <li>Also after each splay the splay tree will become more balanced, but note: A splay tree doesn't need to be balanced it only has to be a BST</li>
   </ul>
   <p>Ex: Splaying after searching</p>
   <img src="static/four.JPG">
@@ -81,7 +81,7 @@
     <li>All operations on average run in O(logn) on average</li>
     <li>And in worse case O(n)</li>
   </ul>
-  <p>Some things they’re used in include:</p>
+  <p>Some things they're used in include:</p>
   <ul>
     <li>Windows NT (in the virtual memory, networking, and file system code)</li>
     <li>The gcc compiler and GNU C++ library</li>
